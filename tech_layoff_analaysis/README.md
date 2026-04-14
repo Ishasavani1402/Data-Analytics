@@ -6,6 +6,7 @@ meaningful insights about workforce reductions across companies, industries, and
 
 The analysis is designed to identify trends, patterns, and key factors influencing layoffs,<br>
 helping stakeholders better understand the evolving dynamics of the tech industry.<br>
+
 ----
 # 📂 Project Structure
 

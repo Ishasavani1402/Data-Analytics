@@ -10,15 +10,15 @@ helping stakeholders better understand the evolving dynamics of the tech industr
 ----
 # 📂 Project Structure
 
-tech_layoff_analaysis/
+tech_layoff_analaysis/<br>
 │
-├── EDA.ipynb                      # Jupyter Notebook for analysis<br>
-├── tech_layoff_2026.csv           # Dataset used for analysis<br>
-├── tech_layoff_2026_analysis.pbix # Power BI dashboard file<br>
-├── dashboard_logo.png             # Dashboard asset<br>
-├── tech_layoff_1.png              # Visualization output<br>
-├── tech_layoff_2.png              # Visualization output<br>
-└── README.md                      # Project documentation<br>
+├── EDA.ipynb<br>                 
+├── tech_layoff_2026.csv<br>          
+├── tech_layoff_2026_analysis.pbix<br> 
+├── dashboard_logo.png<br>             
+├── tech_layoff_1.png<br>              
+├── tech_layoff_2.png<br>            
+└── README.md<br>                   
 
 -----
 # 📊 Dataset Description
@@ -46,6 +46,7 @@ Programming & Analysis<br>
 ✔Tools & Platforms<br>
 ✔Jupyter Notebook<br>
 ✔Power BI (for dashboard visualization)<br>
+
 ----
 # ⚙️ Installation & Setup
 
@@ -65,22 +66,28 @@ Running the Analysis<br>
 jupyter notebook<br>
 
 2 . open EDA.ipynb<br>
+
 3 . Execute cells sequentially to:<br>
     * Load and clean data<br>
     * Perform exploratory data analysis<br>
     * Generate insights and visualizations<br>
+
 -----------
 # 📊 Power BI Dashboard
+
 Open the .pbix file in Power BI Desktop<br>
 Explore interactive dashboards for deeper insights<br>
+
 ----------
 # ✨ Key Features
+
 📈 Time-series analysis of layoffs<br>
 🏢 Company-wise layoff insights<br>
 🌍 Geographic distribution analysis<br>
 📊 Data visualization with clear storytelling<br>
 📉 Trend identification and pattern recognition<br>
 📊 Interactive dashboard using Power BI<br>
+
 ----------
 # 👤 Author
 

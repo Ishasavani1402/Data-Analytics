@@ -10,7 +10,7 @@ helping stakeholders better understand the evolving dynamics of the tech industr
 ----
 # 📂 Project Structure
 
-tech_layoff_analysis/
+tech_layoff_analysis/<br>
 │── EDA.ipynb/                  # Jupyter notebooks for analysis<br>
 │── tech_layoff_2026.csv/       # tech layoff csv file<br>
 │── tech_layoff_2026_analysis.pbix/            # powerBI dashboard file<br>

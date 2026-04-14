@@ -11,11 +11,11 @@ helping stakeholders better understand the evolving dynamics of the tech industr
 # 📂 Project Structure
 
 tech_layoff_analysis/
-│── data/                # Raw and processed datasets
-│── notebooks/           # Jupyter notebooks for analysis
-│── scripts/             # Data cleaning and processing scripts
-│── visualizations/      # Charts and graphs
-│── README.md            # Project documentation
+│── EDA.ipynb/                  # Jupyter notebooks for analysis<br>
+│── tech_layoff_2026.csv/       # tech layoff csv file<br>
+│── tech_layoff_2026_analysis.pbix/            # powerBI dashboard file<br>
+│── README.md                  # Project documentation<br>
+
 -----
 # 📊 Dataset Description
 

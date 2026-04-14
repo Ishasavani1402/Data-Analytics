@@ -10,16 +10,12 @@ helping stakeholders better understand the evolving dynamics of the tech industr
 ----
 # 📂 Project Structure
 
-tech_layoff_analaysis/<br>
-│
-├── EDA.ipynb<br>                 
-├── tech_layoff_2026.csv<br>          
-├── tech_layoff_2026_analysis.pbix<br> 
-├── dashboard_logo.png<br>             
-├── tech_layoff_1.png<br>              
-├── tech_layoff_2.png<br>            
-└── README.md<br>                   
-
+tech_layoff_analysis/
+│── data/                # Raw and processed datasets
+│── notebooks/           # Jupyter notebooks for analysis
+│── scripts/             # Data cleaning and processing scripts
+│── visualizations/      # Charts and graphs
+│── README.md            # Project documentation
 -----
 # 📊 Dataset Description
 
@@ -56,7 +52,7 @@ git clone https://github.com/Ishasavani1402/Data-Analytics.git<br>
 2. Navigate to Project Directory<br>
 cd Data-Analytics/tech_layoff_analaysis<br>
 
-br3. Install Dependencies<br>
+3. Install Dependencies<br>
 pip install pandas numpy matplotlib seaborn jupyter<br>
 --------
 # 🚀 Usage<br>

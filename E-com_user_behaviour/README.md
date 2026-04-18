@@ -1,4 +1,4 @@
-📌 #Introduction
+# 📌 Introduction
 
 This project analyzes e-commerce user behavior to uncover patterns that drive conversions and engagement.<br>
 Using Python (Pandas, NumPy, Matplotlib, Seaborn) and Power BI, the project transforms raw user data into actionable business insights.<br>

@@ -1,4 +1,4 @@
-📌 Introduction
+📌 #Introduction
 
 This project analyzes e-commerce user behavior to uncover patterns that drive conversions and engagement.<br>
 Using Python (Pandas, NumPy, Matplotlib, Seaborn) and Power BI, the project transforms raw user data into actionable business insights.<br>
@@ -6,7 +6,7 @@ Using Python (Pandas, NumPy, Matplotlib, Seaborn) and Power BI, the project tran
 🔍 Focus: What makes users buy?<br>
 📈 Outcome: Data-driven strategies to improve conversion rates<br>
 -----
-# 📂 Project Structure
+#  📂 Project Structure
 
 E-com_user_behaviour/<br>
 │<br>
@@ -51,7 +51,7 @@ cd Data-Analytics/E-com_user_behaviour<br>
 3 . Install Dependencies<br>
 pip install pandas numpy matplotlib seaborn jupyter<br>
 --------
-# 🚀 Usage
+#🚀 Usage
 
 1 . Run Jupyter Notebooks<br>
 jupyter notebook<br>
@@ -63,7 +63,7 @@ Open EDA.ipynb → for analysis<br>
 Open .pbix file in Power BI Desktop<br>
 Explore interactive dashboards and KPIs<br>
 ----------
-✨ # Features
+#✨ # Features
 
 ✔Data Cleaning & Preprocessing.<br>
 ✔Exploratory Data Analysis (EDA).<br>
@@ -72,7 +72,7 @@ Explore interactive dashboards and KPIs<br>
 ✔Conversion Rate Insights.<br>
 ✔Interactive Power BI Dashboard.<br>
 ----------
-📦 Dependencies
+#📦 Dependencies
 
 ✔Python 3.x<br>
 ✔Pandas<br>
@@ -82,7 +82,7 @@ Explore interactive dashboards and KPIs<br>
 ✔Jupyter Notebook<br>
 ✔Power BI (for dashboard visualization)<br>
 -------
-📈 # Analysis Questions
+📈 #Analysis Questions
 
 1 . What factors most influence purchases?<br>
 2 . How does engagement affect conversion?<br>

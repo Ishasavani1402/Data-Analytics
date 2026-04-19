@@ -29,7 +29,7 @@ E-com_user_behaviour/<br>
 ---------
 # 🎯 Objectives
 
-Identify factors influencing user purchase decisions.<br>
+✔Identify factors influencing user purchase decisions.<br>
 ✔Analyze user engagement metrics.<br>
 ✔Study impact of bounce rate on conversions.<br>
 ✔Compare behavior of new vs returning users.<br>
@@ -55,6 +55,7 @@ cd Data-Analytics/E-com_user_behaviour<br>
 
 3 . Install Dependencies<br>
 pip install pandas numpy matplotlib seaborn jupyter<br>
+
 --------
 # 🚀 Usage
 
@@ -98,3 +99,6 @@ Explore interactive dashboards and KPIs<br>
 4 . Do returning users convert more?<br>
 
 -----------
+# 👤 Author
+
+Isha Savani GitHub: https://github.com/Ishasavani1402

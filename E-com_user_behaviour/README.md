@@ -5,6 +5,7 @@ Using Python (Pandas, NumPy, Matplotlib, Seaborn) and Power BI, the project tran
 
 🔍 Focus: What makes users buy?<br>
 📈 Outcome: Data-driven strategies to improve conversion rates<br>
+
 -----
 #  📂 Project Structure
 
@@ -24,6 +25,7 @@ E-com_user_behaviour/<br>
 │   └── E-com_user_behaviour_Analysis.pbix<br>
 │<br>
 └── README.md<br>
+
 ---------
 # 🎯 Objectives
 
@@ -32,13 +34,16 @@ Identify factors influencing user purchase decisions.<br>
 ✔Study impact of bounce rate on conversions.<br>
 ✔Compare behavior of new vs returning users.<br>
 ✔Build interactive dashboards for insights.<br>
+
 --------
 # 📊 Key Insights
+
 ✔Cart Items is the strongest predictor of purchase behavior.<br>
 ✔User Engagement (time on site, session duration) significantly impacts conversions.<br>
 ✔Bounce Rate negatively affects purchase probability.<br>
 ✔Returning Users show higher likelihood of conversion.<br>
 ✔Purchase correlation is generally weak, suggesting multiple combined factors drive behavior.<br>
+
 -------------
 # ⚙️ Installation & Setup
 
@@ -50,6 +55,7 @@ cd Data-Analytics/E-com_user_behaviour<br>
 
 3 . Install Dependencies<br>
 pip install pandas numpy matplotlib seaborn jupyter<br>
+
 --------
 #🚀 Usage
 

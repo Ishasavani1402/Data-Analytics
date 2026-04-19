@@ -67,6 +67,7 @@ Open EDA.ipynb → for analysis<br>
 3 . Power BI Dashboard<br>
 Open .pbix file in Power BI Desktop<br>
 Explore interactive dashboards and KPIs<br>
+
 ----------
 # ✨Features
 
@@ -76,6 +77,7 @@ Explore interactive dashboards and KPIs<br>
 ✔User Segmentation.<br>
 ✔Conversion Rate Insights.<br>
 ✔Interactive Power BI Dashboard.<br>
+
 ----------
 # 📦 Dependencies
 
@@ -86,6 +88,7 @@ Explore interactive dashboards and KPIs<br>
 ✔Seaborn<br>
 ✔Jupyter Notebook<br>
 ✔Power BI (for dashboard visualization)<br>
+
 -------
 # 📈Analysis Questions
 
@@ -93,4 +96,5 @@ Explore interactive dashboards and KPIs<br>
 2 . How does engagement affect conversion?<br>
 3 . What is the impact of bounce rate?<br>
 4 . Do returning users convert more?<br>
+
 -----------

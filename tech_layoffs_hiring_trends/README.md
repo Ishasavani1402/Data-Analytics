@@ -1,12 +1,12 @@
-# Tech Layoffs & Hiring Trends Analysis
+# 📊Tech Layoffs & Hiring Trends Analysis
 
-## Project Overview
+## 💻Project Overview
 
 This project is a data analytics portfolio project focused on understanding workforce movement in the global technology industry. It analyzes layoffs, hiring trends, AI adoption, employee sentiment, remote work, financial performance, and market conditions across major tech sectors.
 
 The goal of this project is to identify how technology companies are balancing layoffs and hiring, how AI adoption is connected with workforce restructuring, and which industries, countries, and company profiles show higher workforce instability.
 
-## Business Problem
+## 🎯Business Problem
 
 The technology industry is experiencing rapid change due to AI automation, market uncertainty, cost optimization, and changing hiring priorities. Companies may reduce headcount in some areas while still hiring for AI, data, cloud, cybersecurity, and engineering roles.
 
@@ -19,7 +19,7 @@ This project answers questions such as:
 - How do market conditions affect layoffs, hiring, and salary budgets?
 - Which company profiles show the highest workforce risk?
 
-## Dataset
+## 📊Dataset
 
 The dataset contains **12,000 workforce records** covering technology companies from **2024 to 2026**.
 
@@ -34,7 +34,7 @@ Key dataset fields include:
 - Work model metrics: `remote_jobs_percentage`
 - Market context: `market_condition`
 
-## Project Workflow
+## 🚀Project Workflow
 
 1. **Data Collection**
    - Used `tech_layoffs_hiring_trends.csv` as the main dataset.
@@ -57,7 +57,7 @@ Key dataset fields include:
 5. **Dashboard Creation**
    - Built a Power BI dashboard for interactive reporting and portfolio presentation.
 
-## Tools & Technologies Used
+## 🧠Tools & Technologies Used
 
 - **Python**
 - **Pandas**
@@ -69,7 +69,7 @@ Key dataset fields include:
 - **Jupyter Notebook**
 - **Power BI**
 
-## Project Structure
+## 🔥Project Structure
 
 ```text
 tech_layoffs_hiring_trends/
@@ -99,7 +99,7 @@ tech_layoffs_hiring_trends/
     └── Project documentation
 ```
 
-## Analysis Performed
+## 🧠Analysis Performed
 
 ### 1. Dataset Overview
 
@@ -156,7 +156,7 @@ tech_layoffs_hiring_trends/
 - Analyzed signs of workforce restructuring rather than simple workforce reduction.
 - Identified company profiles with higher risk based on layoffs, sentiment, job security, and revenue growth.
 
-## Key Dataset Insights
+## 🎯Key Dataset Insights
 
 - The dataset includes records from industries such as **Social Media, E-Commerce, Cloud, Cybersecurity, Gaming, AI, and FinTech**.
 - Countries represented include **Singapore, UK, USA, India, Canada, and Germany**.
@@ -164,7 +164,7 @@ tech_layoffs_hiring_trends/
 - Top hiring roles include **ML Engineer, Data Scientist, Frontend Developer, DevOps Engineer, Software Engineer, Cloud Engineer, Cybersecurity Analyst, and Product Manager**.
 - The analysis shows important relationships between AI adoption, automation impact, layoffs, employee sentiment, and job security.
 
-## Visual Outputs
+## 🚀Visual Outputs
 
 ### Layoff Distribution
 
@@ -174,7 +174,7 @@ tech_layoffs_hiring_trends/
 
 ![Hiring Trend Analysis](hiring_trend_analysis.png)
 
-## Power BI Dashboard
+## 📊Power BI Dashboard
 
 The Power BI dashboard is available in:
 
@@ -189,7 +189,7 @@ To view the dashboard:
 3. Open `tech_layoffs_hiring_trends_analysis.pbix` in Power BI Desktop.
 4. Interact with the dashboard filters, charts, and summary visuals.
 
-## How to Run This Project
+## 🔥How to Run This Project
 
 ### 1. Clone the Repository
 
@@ -261,7 +261,7 @@ tech_layoffs_hiring_trends_analysis.pbix
 
 Use Power BI Desktop to explore the final interactive dashboard.
 
-## Skills Demonstrated
+## 🧠Skills Demonstrated
 
 - Data cleaning and preprocessing
 - MySQL database integration
@@ -274,7 +274,7 @@ Use Power BI Desktop to explore the final interactive dashboard.
 - Power BI dashboard development
 - Portfolio-level project documentation
 
-## Conclusion
+## ✨Conclusion
 
 This project provides a complete analytics workflow for studying technology workforce trends. It combines Python, SQL, and Power BI to move from raw data to cleaned tables, exploratory analysis, visual insights, and an interactive dashboard.
 

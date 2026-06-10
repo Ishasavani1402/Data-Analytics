@@ -10,10 +10,10 @@ load_dotenv()
 def create_connection():
     try:
         conn = mysql.connector.connect(
-            host     = os.environ.get("DB_HOST",     "localhost"),
-            user     = os.environ.get("DB_USER",     "root"),
-            password = os.environ.get("DB_PASSWORD", ""),   # ✅ from .env
-            database = os.environ.get("DB_NAME",     "tech_layoffs_hiring_trends")
+            host     = os.environ.get("DB_HOST", ""),
+            user     = os.environ.get("DB_USER", ""),
+            password = os.environ.get("DB_PASSWORD", ""), 
+            database = os.environ.get("DB_NAME","")
         )
         if conn.is_connected():
             print("✅ Connected to MySQL")

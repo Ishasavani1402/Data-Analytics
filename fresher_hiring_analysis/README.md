@@ -1,6 +1,6 @@
 # 🎯 Fresher Hiring Intelligence: Decoding India's Entry-Level Job Market
 
-> An end-to-end data analytics project analyzing 5,000 fresher job applications across 20+ Indian hiring platforms — uncovering what actually drives offers, where candidates drop off, and which platforms deliver real ROI.
+An end-to-end data analytics project analyzing 5,000 fresher job applications across 20+ Indian hiring platforms — uncovering what actually drives offers, where candidates drop off, and which platforms deliver real ROI.
 
 ---
 
@@ -126,7 +126,7 @@ An interactive dashboard built on the cleaned MySQL dataset, consolidating:
 - Compensation breakdowns by sector/role
 - Demographic and regional hiring patterns
 
-📁 File: `fresher_hiring_analysis.pbix`
+📁 File: `fresher_hiring_analysis.pbix`<br>
 🖼️ Preview: `fresher_hiring_analysis.dashboard.png`
 
 ---
@@ -138,12 +138,12 @@ fresher_hiring_analysis/
 │
 ├── fresher_hiring_india_dataset.csv     # Raw dataset
 ├── clean_dataset.csv                     # Cleaned dataset (output)
-├── csv_mysql.py                          # Loads CSV → MySQL with auto schema detection
+├── csv_mysql.py                          # Loads CSV → MySQL with auto schema      detection
 ├── data_clean.ipynb                      # Data cleaning & feature engineering
 ├── EDA.ipynb                             # 40+ phase-wise SQL/Python analyses
 ├── fresher_hiring_analysis.pbix          # Power BI dashboard file
 ├── fresher_hiring_analysis.dashboard.png # Dashboard preview image
-├── .env.example                          # Sample env config (DB credentials)
+├── .env                                  # Sample env config (DB credentials)
 └── README.md
 ```
 
@@ -207,8 +207,7 @@ fresher_hiring_analysis/
 
 ## 👤 Author
 
-**Neha** — Data Analyst | SQL · Python · Power BI
-📫 Open to feedback, suggestions, and collaboration!
+**Isha Savani** — Data Analyst | SQL · Python · Power BI
 
 ---
 

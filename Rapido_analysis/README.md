@@ -210,11 +210,6 @@ Open `rapido_analysis_dashboard.pbix` in Power BI Desktop and refresh the data s
 
 ---
 
-## 📁 GitHub
-
-**Repository:** [github.com/Ishasavani1402](https://github.com/Ishasavani1402)
-
----
 
 ## 👩‍💻 Author
 

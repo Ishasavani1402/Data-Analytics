@@ -162,7 +162,7 @@ jupyter notebook EDA.ipynb          # then run the analysis
 
 ## 👤 Author
 
-**Neha**
+**Isha Savani**
 📎 [GitHub](https://github.com/Ishasavani1402)
 
 ---

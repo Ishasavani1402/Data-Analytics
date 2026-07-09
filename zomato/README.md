@@ -151,7 +151,7 @@ Delivery time increases sharply with the number of stacked orders a rider is car
 ## 🚀 How to Run
 
 ```bash
-git clone <repo-url>
+git clone <https://github.com/Ishasavani1402/Data-Analytics/tree/main/zomato>
 cd zomato
 pip install pandas numpy matplotlib seaborn
 jupyter notebook data_clean.ipynb   # run first to generate clean_dataset.csv

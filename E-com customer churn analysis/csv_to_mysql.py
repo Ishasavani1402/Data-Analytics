@@ -31,14 +31,7 @@ def create_connection():
 # 2. MAP PANDAS DTYPE → CORRECT MYSQL TYPE
 # ─────────────────────────────────────────────
 def get_mysql_type(col, dtype):
-    """
-    ✅ Use DECIMAL(10,2) for financial/percentage columns
-               instead of FLOAT — prevents silent rounding errors.
-    """
-    decimal_cols = [
     
-    ]
-    if col in decimal_cols:        return "DECIMAL(10,2)"
     if "int"      in str(dtype):   return "INT"
     if "float"    in str(dtype):   return "FLOAT"
     if "datetime" in str(dtype):   return "DATETIME"

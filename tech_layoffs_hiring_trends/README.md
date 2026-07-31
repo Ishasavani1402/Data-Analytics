@@ -74,26 +74,20 @@ Key dataset fields include:
 ```text
 tech_layoffs_hiring_trends/
 │
-├── tech_layoffs_hiring_trends.csv
-│   └── Main dataset used for analysis
+├── datasets
+│   └── tech_layoffs_hiring_trends.csv
+│
+├──notebooks
+│   └── data_clean.ipynb
+    └── EDA_1.IPYNB
+│
+├── power BI
+│   └── hiring_trend_analysis.png
+    └──layoff_distribution.png
+    └──tech_layoffs_hiring_trends_analysis.pbix
 │
 ├── csv_to_mysql.py
-│   └── Python script to load CSV data into MySQL
-│
-├── data_clean.ipynb
-│   └── Data cleaning and preprocessing notebook
-│
-├── EDA.ipynb
-│   └── Exploratory data analysis notebook
-│
-├── hiring_trend_analysis.png
-│   └── Exported hiring trend visualization
-│
-├── layoff_distribution.png
-│   └── Exported layoff distribution visualization
-│
-├── tech_layoffs_hiring_trends_analysis.pbix
-│   └── Power BI dashboard file
+├── requirements.txt.py
 │
 └── README.md
     └── Project documentation

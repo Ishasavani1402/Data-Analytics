@@ -77,7 +77,6 @@ employee_attrition/
 - Checked for nulls, duplicates, and data shape
 - Stripped whitespace from text columns and standardized categorical values
 - Encoded `attrition` (Yes/No → 1/0)
-- Removed low-representation gender category ("Prefer not to say")
 - Binned `age` into age groups and mapped numeric `job_level` codes to readable labels
 - Exported the cleaned dataset for analysis
 

@@ -1,5 +1,6 @@
- select * from sales;
- 
+select * from sales;
+-- SET SQL_SAFE_UPDATES = 0;
+
 -- 1 . total record--
 select count(*) as total_record from sales;
 
@@ -64,18 +65,12 @@ total <= 0 or unit_price <= 0 or gross_margin_pct <= 0
 or rating <= 0;
 
 -- 8 . check unique values
-SELECT
-    'branch' AS column_name,
-    COUNT(DISTINCT branch) AS unique_count,
-    GROUP_CONCAT(DISTINCT branch ORDER BY branch SEPARATOR ', ') AS unique_values
+SELECT 'branch' AS column_name, COUNT(DISTINCT branch) AS unique_count,
+GROUP_CONCAT(DISTINCT branch ORDER BY branch SEPARATOR ', ') AS unique_values
 FROM sales
-
 UNION ALL
 
-SELECT
-    'city',
-    COUNT(DISTINCT city),
-    GROUP_CONCAT(DISTINCT city ORDER BY city SEPARATOR ', ')
+SELECT 'city', COUNT(DISTINCT city),GROUP_CONCAT(DISTINCT city ORDER BY city SEPARATOR ', ')
 FROM sales
 
 UNION ALL
@@ -117,3 +112,24 @@ SELECT
     COUNT(DISTINCT product_category),
     GROUP_CONCAT(DISTINCT product_category ORDER BY product_category SEPARATOR ', ')
 FROM sales;
+
+-- 9 . create column time_of_day --
+SELECT time,
+CASE 
+	WHEN `time` BETWEEN "00:00:00" AND "12:00:00" THEN "Morning"
+	WHEN `time` BETWEEN "12:01:00" AND "16:00:00" THEN "Afternoon"
+	ELSE "Evening" 
+END AS time_of_day
+FROM sales;
+
+alter table sales add column time_of_day varchar(20);
+select * from sales;
+update sales set time_of_day = (CASE 
+	WHEN `time` BETWEEN "00:00:00" AND "12:00:00" THEN "Morning"
+	WHEN `time` BETWEEN "12:01:00" AND "16:00:00" THEN "Afternoon"
+	ELSE "Evening" end
+    );
+    
+-- 10 create column day_name
+alter table sales add column day_name varchar(40);
+update sales set day_name = dayname(date);

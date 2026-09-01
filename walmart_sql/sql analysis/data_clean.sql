@@ -1,5 +1,5 @@
 select * from sales;
--- SET SQL_SAFE_UPDATES = 0;
+SET SQL_SAFE_UPDATES = 0;
 
 -- 1 . total record--
 select count(*) as total_record from sales;
@@ -111,7 +111,14 @@ SELECT
     'product_category',
     COUNT(DISTINCT product_category),
     GROUP_CONCAT(DISTINCT product_category ORDER BY product_category SEPARATOR ', ')
-FROM sales;
+FROM sales
+
+union all 
+select 'product_name' , 
+count(distinct product_name),
+group_concat(distinct product_name order by product_name separator ', ')
+from sales;
+
 
 -- 9 . create column time_of_day --
 SELECT time,
@@ -133,3 +140,22 @@ update sales set time_of_day = (CASE
 -- 10 create column day_name
 alter table sales add column day_name varchar(40);
 update sales set day_name = dayname(date);
+
+-- 11 create column month
+alter table sales add column month_no int;
+update sales set month_no = month(date);
+
+-- 12 . check total column consistency
+SELECT * FROM sales WHERE ABS(total - (unit_price*quantity + vat)) > 0.5
+OR ABS(gross_income - vat) > 0.5;
+-- only 1 row found out of 1000
+
+-- 13. rating consistency
+select * from sales where rating > 10;
+-- no recrod found
+
+select count(*) as total from sales; -- check after all clean process done
+
+-- new clean dataset
+create table clean_sales as 
+select * from sales;

@@ -2,7 +2,7 @@ create database if not exists walmart;
 use walmart;
 
 -- table creation----
-create table sales(
+create table  sales(
 invoice_id varchar(50) not null primary key , 
 branch varchar(30) not null , 
 city varchar(30) not null , 
@@ -34,5 +34,11 @@ rating decimal (2,1) ,
  fields terminated by ','
  enclosed by '"'
  lines terminated by '\n'
- ignore 1 rows;
+ ignore 1 rows
+ (invoice_id, branch, city, customer_type, gender, product_name, product_line,
+ unit_price, quantity, vat, total, @date_var, time, payment, cogs,
+ gross_margin_pct, gross_income, rating, product_category)
+SET date = STR_TO_DATE(@date_var, '%d-%m-%Y %H:%i');
+
+select * from sales;
  

@@ -10,6 +10,14 @@ select round(sum(quantity),2) as total_qty from clean_sales;
 -- 3 . overall avg rate --
 select round(avg(rating),2) as avg_rate from clean_sales;
 
+-- 4 . total orders -- 
+select count(*) as total_order from clean_sales;
+
+-- 5 . total profit --
+select round(sum(total - cogs),2) as total_profit,
+round(100.0 * sum(total-cogs) / sum(total),2) as profit_margin_pct
+from clean_sales;
+
 -- B . sql analysis --
 -- 1 . category wise total sale --
 select product_category , round(sum(total),2) as total_sale ,

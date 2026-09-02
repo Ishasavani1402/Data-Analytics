@@ -41,4 +41,5 @@ rating decimal (2,1) ,
 SET date = STR_TO_DATE(@date_var, '%d-%m-%Y %H:%i');
 
 select * from sales;
+drop table healthcare_dataset;
  

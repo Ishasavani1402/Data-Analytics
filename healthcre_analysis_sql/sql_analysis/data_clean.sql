@@ -122,6 +122,12 @@ union all
 select 'test_results',
 count(distinct test_results) , 
 group_concat(distinct test_results order by test_results separator ', ')
+from healthcare_dataset
+
+union all 
+select 'room_number' , 
+count(distinct room_number) , 
+group_concat(distinct room_number order by room_number separator ', ')
 from healthcare_dataset;
 
 -- 8 . check duplicate data -- 
@@ -136,3 +142,66 @@ insurance_provider,
 billing_amount,room_number,admission_type,
 discharge_date,medication,test_results having count(*) > 1)
 select count(*) as duplicate from a;
+-- ans : found 534 duplicate data 
+
+-- to remove duplicate data --
+-- 1 . add column id as we don't have any promary key column
+alter table healthcare_dataset add column id int primary key auto_increment first;
+
+-- 2 . Rank duplicates and delete the extras (keep the first occurrence, remove the rest)
+with ranked as (select id , row_number() over(partition by 
+patient_name, age, gender, blood_type, medical_condition,
+date_of_admission, doctor_name, hospital_name,
+insurance_provider, billing_amount, room_number,
+admission_type, discharge_date, medication, test_results
+order by id) as rn from healthcare_dataset)
+delete from healthcare_dataset where id in (select id from ranked where rn > 1);   
+
+-- 3 . Verify - should return 0 now
+with a as (select patient_name,age,gender,blood_type,medical_condition,
+date_of_admission,doctor_name,hospital_name,
+insurance_provider,
+billing_amount,room_number,admission_type,
+discharge_date,medication,test_results ,  count(*) as total from healthcare_dataset
+group by patient_name,age,gender,blood_type,medical_condition,
+date_of_admission,doctor_name,hospital_name,
+insurance_provider,
+billing_amount,room_number,admission_type,
+discharge_date,medication,test_results having count(*) > 1)
+select count(*) as duplicate from a;
+-- ans : now remove duplicate data properly
+
+-- 9 . check data shape after remove duplicate -- 
+select count(*) as total_record from healthcare_dataset;
+
+-- 10 . fix patient_name column as the name is not proper case 
+update healthcare_dataset set patient_name = lower(patient_name);
+select * from healthcare_dataset;
+
+-- create new columns (feature engineering) --
+-- 1 . patient_admit_days --
+alter table healthcare_dataset add column no_of_day_admit int ; 
+update healthcare_dataset set no_of_day_admit = datediff(discharge_date , date_of_admission);
+
+select * from healthcare_dataset;
+
+
+-- 2 . age group -- 
+select min(age)  , max(age) from healthcare_dataset;
+
+alter table healthcare_dataset add column age_group varchar(30);
+update healthcare_dataset set age_group = 
+case when age between 13 and 19 then 'teenagers'
+when age between 20 and 29 then 'young adult' 
+when age between 30 and 39 then 'adult' 
+when age between 40 and 49 then 'middle age'
+when age between 50 and 59 then 'older adult'
+when age between  60 and 69 then 'senior adult'
+when age between 70 and 79 then 'elderly'
+else 'very Elderly' end;
+
+select * from healthcare_dataset;
+
+-- save clean_dataset -- 
+create table clean_dataset as 
+select * from healthcare_dataset;

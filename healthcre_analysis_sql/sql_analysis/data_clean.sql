@@ -41,7 +41,9 @@ or trim(hospital_name) = ''
 or trim(insurance_provider) = ''
 or trim(admission_type) = ''
 or trim(medication) = ''
-or trim(test_results) = '';
+or trim(test_results) = ''
+or trim(blood_type) = ''
+or trim(gender) = '';
 -- ans : no blank value found
 
 -- 6 : remove white spaces --
@@ -198,10 +200,10 @@ when age between 40 and 49 then 'middle age'
 when age between 50 and 59 then 'older adult'
 when age between  60 and 69 then 'senior adult'
 when age between 70 and 79 then 'elderly'
-else 'very Elderly' end;
+else 'very elderly' end;
 
 select * from healthcare_dataset;
-
+drop table clean_dataset;
 -- save clean_dataset -- 
 create table clean_dataset as 
 select * from healthcare_dataset;

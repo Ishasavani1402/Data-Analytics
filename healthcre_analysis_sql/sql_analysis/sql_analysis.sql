@@ -87,3 +87,62 @@ from clean_dataset group by  month(date_of_admission))
 select admit_month  , total_bill_revenue , 
 round(sum(total_bill_revenue) over(order by admit_month) ,2) as cumulative_revenue
 from monthly_revenue;
+
+-- 13 . Within each hospital, rank doctors by total billing generated — who's the top revenue doctor per hospital?
+with overall_bill as (select hospital_name , doctor_name , round(sum(billing_amount),2) as total_bill
+from clean_dataset group by 1 , 2),
+rnk as (select * , dense_rank() over(partition by hospital_name order by total_bill desc) as top_bill_rnk
+from overall_bill)
+select * from rnk where top_bill_rnk = 1;
+
+-- 14 . Which patients appear more than once in the dataset (by name) — repeat-admission pattern?
+select patient_name , count(*) as total_count , 
+count(distinct gender) as gender
+from clean_dataset group by patient_name 
+having count(patient_name) > 1 order by total_count desc;
+
+-- 15. Which admission_type + medical_condition combination has the longest average stay, and what's its cost impact?
+select admission_type , medical_condition , round(avg(no_of_day_admit),2) as avg_stay , 
+round(sum(billing_amount),2) as total_bill , 
+round(avg(billing_amount),2) as avg_bill ,
+ count(*) as total_case
+from clean_dataset group by 1 , 2 order by avg_stay desc;
+
+-- 16 . Is there a correlation between insurance_provider and % of "Abnormal" test results (conditional aggregation)?
+select insurance_provider , count(*) as total_record ,
+count(case when test_results = 'Abnormal' then 1 end) as abanormal_count , 
+round(count(case when test_results = 'Abnormal' then 1 end) * 100.0 /
+count(*) , 2) as pct_of_total from clean_dataset
+group by 1;
+
+-- 17 . Top 3 most expensive medical conditions within each age_group
+with all_group as (select age_group , medical_condition , round(sum(billing_amount),2) as total_bill , 
+dense_rank() over(partition by age_group order by round(sum(billing_amount),2) desc) as most_expensive_rnk
+from clean_dataset group by 1 ,2)
+select * from all_group where most_expensive_rnk <=3 order by age_group;
+
+-- 18 . Cost-per-day of stay — which hospitals are outliers on cost efficiency?
+with hospital_metrix as (select hospital_name , 
+round(avg(billing_amount / nullif(no_of_day_admit , 0)),2) as cost_per_day_admit
+from clean_dataset group by hospital_name),
+tield as (select * , ntile(10) over(order by cost_per_day_admit) as cost_tile from hospital_metrix)
+select * from tield where cost_tile in (1 , 10)
+order by cost_per_day_admit desc;
+
+-- 19 . Which quarter of the year sees the highest volume of "Emergency" admissions?
+select quarter(date_of_admission) as qtr , 
+count(case when admission_type = 'Emergency' then 1 end) as Emergency_admit
+from clean_dataset group by quarter(date_of_admission)
+order by Emergency_admit desc; 
+
+-- 20 . Insurance provider comparison: normal vs abnormal vs inconclusive test result rates, 
+-- side by side (pivot-style with CASE + AVG).
+select insurance_provider , 
+round(avg(case when trim(replace(test_results , char(13) , '')) = 'Normal' then 1 else 0 end)* 100,2)
+as normal_result ,
+round(avg(case when trim(replace(test_results , char(13) , '')) = 'Abnormal' then 1 else 0 end) * 100,2)
+as abnormal_result , 
+round(avg(case when trim(replace(test_results , char(13) , '')) = 'Inconclusiv' then 1 else 0 end) * 100,2 )
+as inconclusive_result 
+from clean_dataset group by insurance_provider;  
+

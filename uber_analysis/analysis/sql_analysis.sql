@@ -27,13 +27,14 @@ round(sum(total_booking_amount),2) as total_booking_revenue ,
 round(sum(total_booking_amount) * 100.0 / sum(sum(total_booking_amount)) over() , 2) as pct_of_total_revenue
 from clean_trip_detail group by vehicle order by total_booking_revenue desc;
 
--- 2. vehical wise trip_duration min 
-select vehicle , round(sum(trip_duration_min),2) as total_trip_duration_min
-from clean_trip_detail group by vehicle order by total_trip_duration_min desc;
+-- 2. vehicle wise avg trip duration (per-ride comparison)
+select vehicle , round(avg(trip_duration_min),2) as avg_trip_duration_min
+from clean_trip_detail group by vehicle order by avg_trip_duration_min desc;
 
--- 3 . which vehical gave higest fare amount(which vehical costly)
-select vehicle , round(sum(fare_amount),2) as total_fare_amount from 
-clean_trip_detail group by vehicle order by total_fare_amount desc;
+-- 3 .  which vehicle is costliest per ride
+select vehicle , count(*) as total_trip ,
+round(avg(fare_amount),2) as avg_fare_amount from 
+clean_trip_detail group by vehicle order by avg_fare_amount desc;
 
 -- 4 . vehical and passanger count 
 select vehicle , round(sum(passenger_count),2) as total_passaenger from 
@@ -56,7 +57,7 @@ round(sum(fare_amount),2) as total_fare_amount from clean_trip_detail
 group by payment_type;
 
 -- 7 . day wise trip
-select distinct(dayname(pickup_date)) as days , count(*) as total_trip from clean_trip_detail
+select dayname(pickup_date) as days , count(*) as total_trip from clean_trip_detail
 group by days order by field(days , 'Sunday' , 'Monday' , 'Tuesday' , 'Wednesday' , 
 'Thursday' , 'Friday' , 'Saturday'); 
 
@@ -68,6 +69,32 @@ from clean_trip_detail group by pickup_hour order by pickup_hour;
 -- 9 . daily booking 
 select pickup_date , count(*) as total_trip , 
 round(sum(total_booking_amount),2) as total_revenue
-from clean_trip_detail group by pickup_date order by pickup_date
+from clean_trip_detail group by pickup_date order by pickup_date;
 
+-- 10. passanger count wise fare amount distribution
+select passenger_count , count(*) as total_trip , 
+round(sum(fare_amount),2) as total_fare_amnt from clean_trip_detail
+group by passenger_count order by total_fare_amnt desc;
 
+-- 11. top pickup zones by trip count and revenue
+select l.city, l.location, count(*) as total_trip,
+round(sum(t.total_booking_amount),2) as total_revenue
+from clean_trip_detail t
+join clean_location l on t.pulocationid = l.locationid
+group by l.city, l.location
+order by total_revenue desc
+limit 10;
+
+-- 12 . weekend vs weekday comparision
+-- weekday vs weekend comparison
+select case when dayname(pickup_date) in ('Saturday','Sunday') then 'Weekend' else 'Weekday' end as day_type,
+count(*) as total_trip, round(avg(total_booking_amount),2) as avg_booking_amt
+from clean_trip_detail group by day_type;
+
+-- 13 . -- surge fee contribution (how much revenue comes from surge)
+select
+count(case when surgefee > 0 then 1 end) as trips_with_surge,
+round(count(case when surgefee > 0 then 1 end) * 100.0 / count(*), 2) as pct_trips_with_surge,
+round(sum(surgefee),2) as total_surge_revenue,
+round(sum(surgefee) * 100.0 / sum(total_booking_amount), 2) as pct_of_total_revenue
+from clean_trip_detail;

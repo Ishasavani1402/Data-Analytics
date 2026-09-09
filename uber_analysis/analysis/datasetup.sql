@@ -38,5 +38,6 @@ constraint fk_pu_location  foreign key (PULocationID) references location(Locati
 constraint fk_do_location foreign key (DOLocationID) references location(LocationID)
 );
 
-select * from clean_location;
+truncate table location;
+select * from trip_detail
 -- next is create new column 

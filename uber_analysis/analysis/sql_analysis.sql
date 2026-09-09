@@ -17,6 +17,7 @@ select round(avg(trip_distance),2) as avg_distance ,
 round(sum(total_booking_amount),2) as total_booking_revenue ,
 round(avg(trip_duration_min),2) as avg_trip_duration_min , 
 round(sum(fare_amount),2) as total_fare_amount , 
+round(avg(fare_amount),2) as avg_fare_amount , 
 round(sum(surgefee),2) as total_surge_fee from clean_trip_detail;
 
 -- 3 . sql analysis
@@ -82,8 +83,7 @@ round(sum(t.total_booking_amount),2) as total_revenue
 from clean_trip_detail t
 join clean_location l on t.pulocationid = l.locationid
 group by l.city, l.location
-order by total_revenue desc
-limit 10;
+order by total_revenue desc;	
 
 -- 12 . weekend vs weekday comparision
 -- weekday vs weekend comparison
@@ -98,3 +98,16 @@ round(count(case when surgefee > 0 then 1 end) * 100.0 / count(*), 2) as pct_tri
 round(sum(surgefee),2) as total_surge_revenue,
 round(sum(surgefee) * 100.0 / sum(total_booking_amount), 2) as pct_of_total_revenue
 from clean_trip_detail;
+
+-- 14 . each city wise which location has higest trip
+with city_location_trips as (
+    select l.city, l.location, count(*) as total_trip,
+    rank() over (partition by l.city order by count(*) desc) as rnk
+    from clean_trip_detail t
+    join clean_location l on t.pulocationid = l.locationid
+    group by l.city, l.location
+)
+select city, location, total_trip
+from city_location_trips
+where rnk = 1
+order by total_trip desc;

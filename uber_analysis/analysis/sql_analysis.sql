@@ -107,7 +107,6 @@ with city_location_trips as (
     join clean_location l on t.pulocationid = l.locationid
     group by l.city, l.location
 )
-select city, location, total_trip
+select city, location, total_trip , rnk
 from city_location_trips
-where rnk = 1
-order by total_trip desc;
+where rnk = 1;

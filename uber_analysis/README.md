@@ -2,8 +2,6 @@
 
 End-to-end data analytics project on 100K+ Uber trip records — from raw Excel files to a live Power BI dashboard, covering ETL, MySQL data modeling, data cleaning, SQL business analysis, and dashboard storytelling.
 
-![Dashboard Preview](powerBi/uber%20analysis%20dashboard.png)
-
 ---
 
 ## 📌 Project Overview
@@ -141,14 +139,6 @@ Execute the queries in `analysis/sql_analysis.sql` against your MySQL instance.
 
 **8. Explore the dashboard**
 Open `powerBi/uber analysis.pbix` in Power BI Desktop and point it at your local MySQL instance to refresh with your own data.
-
----
-
-## 🔮 Possible Extensions
-
-- Add a fare-per-mile efficiency metric to flag pricing outliers
-- Geo-map visualization of pickup/dropoff hotspots
-- Time-series forecasting of daily trip demand
 
 ---
 

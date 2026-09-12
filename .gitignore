@@ -8,3 +8,4 @@ E-com customer churn analysis/.env
 Mytra sales analysis/.env
 Dominozz_sale_analysis/.env
 uber_analysis/.env
+*.env

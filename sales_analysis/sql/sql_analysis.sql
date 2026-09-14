@@ -83,5 +83,11 @@ group by year)
 select * , round(((total_sale - previous_year_sale) / nullif(previous_year_sale , 0)) * 100.0  ,2) as growth_pct
 from sales;
 -- 11 . year over year net profit growth
+with sales as (select year , round(sum(net_profit),2) as total_net_profit , 
+lag(round(sum(net_profit),2)) over(order by year) as previous_year_profit
+from sales_clean_data 
+group by year)
+select * , round(((total_net_profit - previous_year_profit) / nullif(previous_year_profit , 0)) * 100.0  ,2) as growth_pct
+from sales;
 
 

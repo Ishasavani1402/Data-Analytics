@@ -2,8 +2,6 @@
 
 A complete sales performance analysis pipeline: raw data → Python cleaning → SQL business analysis → interactive Power BI dashboard. Built as a portfolio project covering the full analytics workflow a Data Analyst role expects.
 
-![Dashboard preview](powerBi/screenshots/dashboard_page2.png)
-
 ---
 
 ## 📌 Overview
@@ -17,8 +15,8 @@ The project deliberately mirrors a real analyst's workflow — the raw data had 
 | Layer | Tools |
 |---|---|
 | Data cleaning & EDA | Python, pandas, NumPy, Matplotlib, Seaborn |
-| Database | MySQL, SQLAlchemy |
-| Business analysis | SQL (window functions, recursive CTEs) |
+| Database | MySQL |
+| Business analysis | SQL |
 | Dashboard | Power BI (DAX measures, dynamic insight text) |
 | Environment config | python-dotenv |
 
@@ -38,7 +36,7 @@ sales_analysis/
 │   ├── sales analysis.pbix       # Interactive 4-page dashboard
 │   ├── sales analysis.pdf        # Static export
 │   └── logo.png
-└── xls_to_muysql.py              # Loads cleaned data into MySQL
+└── xls_to_MySql.py              # Loads cleaned data into MySQL
 ```
 
 ## 🧹 Data Cleaning Highlights
@@ -73,13 +71,7 @@ Result: **1,006 clean rows, 0 nulls, 0 duplicates**, ready for analysis.
 
 4 pages: landing/navigation, sales & profit analysis, order analysis, and an advanced YoY growth page with a dynamic DAX-generated insights summary.
 
-| Sales & Profit Analysis | Order Analysis |
-|---|---|
-| ![Sales and profit](powerBi/screenshots/dashboard_page2.png) | ![Order analysis](powerBi/screenshots/dashboard_page3.png) |
-
-| Advanced Analysis (YoY growth + dynamic insights) |
-|---|
-| ![Advanced analysis](powerBi/screenshots/dashboard_page4.png) |
+see : **powerBi/sales analysis.pdf**
 
 **Key measures:** `total_sales`, `total_net_profit`, `profit_margin`, YoY growth %, and a dynamic "Dashboard Insights" text measure that auto-generates a plain-English summary (top state/region/category by sales, profit, and orders) as filters change.
 
@@ -95,13 +87,13 @@ Result: **1,006 clean rows, 0 nulls, 0 duplicates**, ready for analysis.
 
 **1. Clone the repo**
 ```bash
-git clone <your-repo-url>
+git clone https://github.com/Ishasavani1402/Data-Analytics/tree/main/sales_analysis
 cd sales_analysis
 ```
 
 **2. Set up the Python environment**
 ```bash
-pip install pandas numpy matplotlib seaborn sqlalchemy mysql-connector-python python-dotenv openpyxl xlrd jupyter
+open requirements.txt and install all python dependencies that have inside
 ```
 
 **3. Run the data cleaning notebook**
@@ -113,19 +105,19 @@ Open `notebook/EDA.ipynb` and run all cells to reproduce the charts and KPI brea
 **5. Load into MySQL**
 Create a `.env` file next to `xls_to_muysql.py`:
 ```
-DB_HOST=localhost
-DB_USER=your_username
+DB_HOST=your_host_name
+DB_USER=your_your_username
 DB_PASSWORD=your_password
-DB_NAME=sales
-XLS_FILE=dataset/sales_clean_data.xlsx
+DB_NAME=your_database_name
+XLS_FILE=your_file_path
 ```
 Then run:
 ```bash
-python xls_to_muysql.py
+python xls_to_MySql.py
 ```
 
 **6. Run the SQL analysis**
-Open `sql/sql_analysis.sql` in MySQL Workbench (or your client of choice) against the `sales` database and run the queries.
+Open `sql/sql_analysis.sql` in MySQL Workbench (or your client of choice) against the `yourdatabase` database and run the queries.
 
 **7. Open the dashboard**
 Open `powerBi/sales analysis.pbix` in Power BI Desktop. Point the data source to your MySQL `sales_clean_data` table (or the cleaned Excel file) and refresh.

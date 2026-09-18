@@ -1,276 +1,145 @@
-# 📊Tech Layoffs & Hiring Trends Analysis
+# 📊 Tech Layoffs & Hiring Trend Analysis
 
-## 💻Project Overview
+End-to-end analytics project on global tech industry workforce trends — covering layoffs, hiring activity, AI adoption, and employee sentiment. Built with **Python → MySQL → Power BI**, taking raw data through cleaning, EDA, SQL analysis, and an interactive dashboard.
 
-This project is a data analytics portfolio project focused on understanding workforce movement in the global technology industry. It analyzes layoffs, hiring trends, AI adoption, employee sentiment, remote work, financial performance, and market conditions across major tech sectors.
+![Python](https://img.shields.io/badge/Python-3.x-blue)
+![MySQL](https://img.shields.io/badge/MySQL-8.0-orange)
+![Power BI](https://img.shields.io/badge/Power%20BI-Dashboard-yellow)
+![Status](https://img.shields.io/badge/Status-Complete-brightgreen)
 
-The goal of this project is to identify how technology companies are balancing layoffs and hiring, how AI adoption is connected with workforce restructuring, and which industries, countries, and company profiles show higher workforce instability.
+---
 
-## 🎯Business Problem
+## 🎯 Objective
 
-The technology industry is experiencing rapid change due to AI automation, market uncertainty, cost optimization, and changing hiring priorities. Companies may reduce headcount in some areas while still hiring for AI, data, cloud, cybersecurity, and engineering roles.
+Identify layoff patterns and hiring trends across the global tech industry, and understand how they relate to AI adoption, market conditions, and employee sentiment — using a full analytics pipeline from raw data to a decision-ready dashboard.
 
-This project answers questions such as:
+---
 
-- Which industries and countries are experiencing the highest layoffs?
-- Which sectors are still hiring despite workforce reductions?
-- How does AI adoption relate to layoffs, job security, and employee sentiment?
-- Which roles are most in demand in the current tech market?
-- How do market conditions affect layoffs, hiring, and salary budgets?
-- Which company profiles show the highest workforce risk?
+## 🗂️ Dataset
 
-## 📊Dataset
+| | |
+|---|---|
+| **Records** | 12,000 rows |
+| **Companies** | 20 (Microsoft, Google, Meta, Amazon, Apple, Databricks, Anthropic, Stripe, and others) |
+| **Industries** | 7 — AI, Cloud, Cybersecurity, E-Commerce, FinTech, Gaming, Social Media |
+| **Countries** | 6 — USA, UK, India, Canada, Germany, Singapore |
+| **Time range** | 2024 – 2026 |
+| **Key fields** | layoffs_count, layoff_percentage, hiring_trend, open_roles, ai_adoption_level, ai_replacement_risk, employee_sentiment, job_security_score, market_condition |
 
-The dataset contains **12,000 workforce records** covering technology companies from **2024 to 2026**.
+---
 
-Key dataset fields include:
+## 🛠️ Tech Stack
 
-- Company information: `company_name`, `industry`, `country`, `company_size`
-- Layoff metrics: `layoffs_count`, `layoff_percentage`, `reason_for_layoffs`
-- Hiring metrics: `open_roles`, `hiring_trend`, `top_hiring_role`
-- AI metrics: `ai_automation_impact`, `ai_replacement_risk`, `ai_adoption_level`
-- Employee metrics: `employee_sentiment`, `job_security_score`
-- Business metrics: `stock_growth_percent`, `revenue_growth_percent`, `salary_budget_change`
-- Work model metrics: `remote_jobs_percentage`
-- Market context: `market_condition`
+- **Python** — pandas, numpy, matplotlib, seaborn (cleaning + EDA)
+- **MySQL 8.0** — via `mysql-connector-python` + `python-dotenv` (storage + SQL analysis)
+- **SQL** — window functions (`DENSE_RANK`, partitioned aggregates) for ranking and share-of-total analysis
+- **Power BI** — 2-page interactive dashboard with drill-through navigation and slicers
 
-## 🚀Project Workflow
+---
 
-1. **Data Collection**
-   - Used `tech_layoffs_hiring_trends.csv` as the main dataset.
+## 📁 Project Structure
 
-2. **Database Loading**
-   - Loaded the CSV data into a MySQL database using `csv_to_mysql.py`.
-   - Created the source table `tech_layoffs_hiring_trends`.
-
-3. **Data Cleaning**
-   - Connected Jupyter Notebook to MySQL.
-   - Checked data shape, null values, duplicates, and column consistency.
-   - Removed unnecessary fields such as `record_id`.
-   - Cleaned whitespace from text columns.
-   - Stored the cleaned data as a MySQL table named `clean_dataset`.
-
-4. **Exploratory Data Analysis**
-   - Performed detailed EDA using Python, Pandas, Matplotlib, and Seaborn.
-   - Analyzed layoffs, hiring, AI adoption, employee sentiment, financial performance, and remote work.
-
-5. **Dashboard Creation**
-   - Built a Power BI dashboard for interactive reporting and portfolio presentation.
-
-## 🧠Tools & Technologies Used
-
-- **Python**
-- **Pandas**
-- **NumPy**
-- **Matplotlib**
-- **Seaborn**
-- **SQLAlchemy**
-- **MySQL**
-- **Jupyter Notebook**
-- **Power BI**
-
-## 🔥Project Structure
-
-```text
+```
 tech_layoffs_hiring_trends/
 │
-├── datasets
-│   └── tech_layoffs_hiring_trends.csv
+├── datasets/
+│   ├── tech_layoffs_hiring_trends.csv     # raw data
+│   └── clean_dataset.csv                  # cleaned data (output of data_clean.ipynb)
 │
-├──notebooks
-│   └── data_clean.ipynb
-    └── EDA_1.IPYNB
+├── notebooks/
+│   ├── data_clean.ipynb                   # null/duplicate/whitespace/negative/range checks
+│   └── EDA.ipynb                          # correlation, outliers, KPIs, trend analysis
 │
-├── power BI
-│   └── hiring_trend_analysis.png
-    └──layoff_distribution.png
-    └──tech_layoffs_hiring_trends_analysis.pbix
+├── sql/
+│   └── sql_analysis.sql                   # ranking & distribution queries (window functions)
 │
-├── csv_to_mysql.py
-├── requirements.txt.py
+├── power Bi/
+│   ├── tech_layoff_hiring_trend.pbix
+│   ├── tech_layoff_hiring_trend_1.png
+│   └── tech_layoff_hiring_trend_2.png
 │
+├── csv_to_mysql.py                        # ETL script: CSV → MySQL (schema-aware, batch insert)
+├── requirements.txt
 └── README.md
-    └── Project documentation
 ```
 
-## 🧠Analysis Performed
+---
 
-### 1. Dataset Overview
+## 🔄 Workflow
 
-- Counted companies, industries, and countries represented in the data.
-- Analyzed company size distribution.
-- Identified industries contributing the largest share of workforce records.
+**1. Data Cleaning** (`data_clean.ipynb`)
+- Standardized column names, stripped whitespace from text fields
+- Verified `record_id` as a unique primary key (12,000/12,000)
+- Checked nulls, duplicates, and out-of-range values (percentages bound to 0–100, scores bound to 1–10)
+- Validated categorical fields for spelling/casing inconsistencies
 
-### 2. Layoff Analysis
+**2. Exploratory Data Analysis** (`EDA.ipynb`)
+- Correlation heatmap across all numeric features
+- IQR-based outlier detection with boxplot visualization
+- KPI summary, yearly trend, and breakdowns by country / industry / company / company size / market condition
+- AI adoption vs. replacement risk, and sentiment/job-security trend over time
 
-- Identified industries with the highest layoffs.
-- Compared layoffs across countries and company sizes.
-- Analyzed common reasons for layoffs such as AI automation, cost cutting, restructuring, overhiring correction, and market slowdown.
-- Studied layoff behavior under different market conditions.
-- Reviewed layoff trends over time.
+**3. SQL Analysis** (`sql_analysis.sql`)
+- Loaded into MySQL via `csv_to_mysql.py` (dynamic schema creation, `DECIMAL` typing for percentage/score fields, chunked inserts, null-safe handling)
+- Window-function queries: top layoff company per year, most common layoff reason per industry, country with highest layoffs per year, top hiring role per company, and each company's share of moderate/aggressive hiring activity per year
 
-### 3. Hiring Trend Analysis
+**4. Power BI Dashboard**
+- 2-page interactive report with drill-through (`next` / `back`) navigation
+- Slicers: hiring role, year, company name, company size, industry
+- KPI cards, geographic and categorical breakdowns, and a dedicated insights panel
 
-- Identified industries with the highest number of open roles.
-- Analyzed the most frequently hired roles.
-- Compared hiring trends across industries and countries.
-- Studied where hiring continues despite layoffs.
+---
 
-### 4. AI Adoption Analysis
+## 📌 Key Insights
 
-- Compared AI adoption levels across industries.
-- Studied the relationship between AI adoption and layoff percentage.
-- Analyzed AI replacement risk by industry.
-- Identified job roles associated with high-AI-adoption companies.
-- Compared AI automation impact across company sizes.
+- **60.1M** total layoffs and **34.6M** open roles recorded across 20 companies (2024–2026), at an average layoff rate of **12.78%**
+- **Social Media** is the leading industry by total layoffs; **UK** leads by country
+- **2024** recorded the highest yearly layoffs; **2026** saw the highest number of open roles — signaling a hiring recovery
+- **ML Engineer** is the most in-demand hiring role (8M+ open roles), and **AI Automation** is the most cited layoff reason
+- AI adoption level shows a strong positive correlation with AI replacement risk, while layoff percentage is strongly negatively correlated with job security score
 
-### 5. Employee Sentiment Analysis
+---
 
-- Compared employee sentiment across industries.
-- Identified industries with lower job security scores.
-- Analyzed how layoffs affect employee sentiment and job security.
-- Studied employee sentiment under different market conditions.
+## ⚠️ Known Limitations
 
-### 6. Financial Performance Analysis
+- `hiring_trend` and `company_size` labels don't always causally align with `open_roles` / `layoffs_count` (e.g., some "Hiring Freeze" records still show high open role counts) — these fields should be read as independent simulated signals, not strictly causal ones.
+- `stock_growth_percent`, `revenue_growth_percent`, and `salary_budget_change` were excluded from the cleaned dataset and are not reflected in the EDA, SQL, or dashboard.
 
-- Analyzed revenue growth by industry.
-- Studied the relationship between stock growth and open roles.
-- Compared salary budget changes across industries.
-- Checked whether negative revenue growth is associated with larger layoffs.
+---
 
-### 7. Remote Workforce Analysis
-
-- Identified industries and countries with higher remote job percentages.
-- Analyzed whether remote work percentage influences employee sentiment.
-- Compared remote work availability across hiring trends.
-
-### 8. Workforce Risk & Restructuring Analysis
-
-- Identified industries showing high layoffs, high hiring, and high AI adoption together.
-- Analyzed signs of workforce restructuring rather than simple workforce reduction.
-- Identified company profiles with higher risk based on layoffs, sentiment, job security, and revenue growth.
-
-## 🎯Key Dataset Insights
-
-- The dataset includes records from industries such as **Social Media, E-Commerce, Cloud, Cybersecurity, Gaming, AI, and FinTech**.
-- Countries represented include **Singapore, UK, USA, India, Canada, and Germany**.
-- The data covers companies from **Startup, Mid-size, Enterprise, and Big Tech** segments.
-- Top hiring roles include **ML Engineer, Data Scientist, Frontend Developer, DevOps Engineer, Software Engineer, Cloud Engineer, Cybersecurity Analyst, and Product Manager**.
-- The analysis shows important relationships between AI adoption, automation impact, layoffs, employee sentiment, and job security.
-
-## 🚀Visual Outputs
-
-### Layoff Distribution
-
-![Layoff Distribution](layoff_distribution.png)
-
-### Hiring Trend Analysis
-
-![Hiring Trend Analysis](hiring_trend_analysis.png)
-
-## 📊Power BI Dashboard
-
-The Power BI dashboard is available in:
-
-```text
-tech_layoffs_hiring_trends_analysis.pbix
-```
-
-To view the dashboard:
-
-1. Install **Power BI Desktop**.
-2. Download or clone this repository.
-3. Open `tech_layoffs_hiring_trends_analysis.pbix` in Power BI Desktop.
-4. Interact with the dashboard filters, charts, and summary visuals.
-
-## 🔥How to Run This Project
-
-### 1. Clone the Repository
+## ▶️ How to Reproduce
 
 ```bash
-git clone <your-repository-url>
-cd tech_layoffs_hiring_trends
+# 1. Install dependencies
+pip install -r requirements.txt
+
+# 2. Run data cleaning
+jupyter notebook notebooks/data_clean.ipynb
+
+# 3. Run EDA
+jupyter notebook notebooks/EDA.ipynb
+
+# 4. Load cleaned data into MySQL (set DB credentials in a .env file)
+python csv_to_mysql.py datasets/clean_dataset.csv
+
+# 5. Run sql/sql_analysis.sql in your MySQL client
+
+# 6. Open power Bi/tech_layoff_hiring_trend.pbix in Power BI Desktop
 ```
 
-### 2. Install Required Python Libraries
+---
 
-```bash
-pip install pandas numpy matplotlib seaborn sqlalchemy mysql-connector-python
-```
+## 📷 Dashboard Preview
 
-### 3. Set Up MySQL Database
+**Page 1 — Overview**
+![Dashboard Part 1](power%20Bi/tech_layoff_hiring_trend_1.png)
 
-Create a MySQL database:
+**Page 2 — Deep Dive**
+![Dashboard Part 2](power%20Bi/tech_layoff_hiring_trend_2.png)
 
-```sql
-CREATE DATABASE tech_layoffs_hiring_trends;
-```
+---
 
-Update the MySQL credentials in `csv_to_mysql.py` and the notebooks according to your local setup:
+## 👤 Author
 
-```python
-host="localhost"
-user="root"
-password="your_password"
-database="tech_layoffs_hiring_trends"
-```
-
-### 4. Load CSV Data into MySQL
-
-Run:
-
-```bash
-python csv_to_mysql.py
-```
-
-This script creates a MySQL table from the CSV file and inserts the dataset into the database.
-
-### 5. Run Data Cleaning Notebook
-
-Open and run:
-
-```text
-data_clean.ipynb
-```
-
-This notebook cleans the source table and creates the `clean_dataset` table.
-
-### 6. Run EDA Notebook
-
-Open and run:
-
-```text
-EDA.ipynb
-```
-
-This notebook performs the full exploratory data analysis.
-
-### 7. Open Power BI Dashboard
-
-Open:
-
-```text
-tech_layoffs_hiring_trends_analysis.pbix
-```
-
-Use Power BI Desktop to explore the final interactive dashboard.
-
-## 🧠Skills Demonstrated
-
-- Data cleaning and preprocessing
-- MySQL database integration
-- SQL-based data extraction
-- Exploratory data analysis
-- Business problem framing
-- Data visualization
-- Workforce analytics
-- AI impact analysis
-- Power BI dashboard development
-- Portfolio-level project documentation
-
-## ✨Conclusion
-
-This project provides a complete analytics workflow for studying technology workforce trends. It combines Python, SQL, and Power BI to move from raw data to cleaned tables, exploratory analysis, visual insights, and an interactive dashboard.
-
-The project highlights how layoffs, hiring demand, AI adoption, market conditions, financial performance, and employee sentiment interact in the modern technology job market.
-
+**Isha Savani**
+GitHub: [@Ishasavani1402](https://github.com/Ishasavani1402)

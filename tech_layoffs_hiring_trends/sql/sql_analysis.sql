@@ -5,6 +5,8 @@ select * from clean_dataset;
 -- 1 . total record --
 select count(distinct record_id) as total_record from clean_dataset;
 
+select round(avg(layoff_percentage),2) as layoff_pct from clean_dataset;
+
 -- 2 . ai_automation_impact and job security and employee sentiment
 select case when ai_automation_impact <4 then 'low impact'  
 when ai_automation_impact < 7.4 then 'moderate impact'

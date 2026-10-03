@@ -8,5 +8,6 @@ E-com customer churn analysis/.env
 Mytra sales analysis/.env
 Dominozz_sale_analysis/.env
 uber_analysis/.env
-*.envgogle_play_store/dataset/Google-Playstore.csv
+*.env
+gogle_play_store/dataset/Google-Playstore.csv
 gogle_play_store/notebook/data_clean.ipynb

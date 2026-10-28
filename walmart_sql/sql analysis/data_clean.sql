@@ -159,3 +159,5 @@ select count(*) as total from sales; -- check after all clean process done
 -- new clean dataset
 create table clean_sales as 
 select * from sales;
+
+select * from clean_sales;
